@@ -92,13 +92,13 @@ class krmkMod(loader.Module):
         if not hasattr(m, "text") or not isinstance(m, Message):
             return
         if "У кого Кэйя с6" in m.text:
-            await asyncio.sleep(random.randint(3, 33))
+            await asyncio.sleep(random.randint(3, 3))
             await (await self.client.get_messages("tginfochat", ids=1419481)).react("❤️")
         if (
             m.chat_id not in ch
             or m.sender_id == self.me.id
             or m.date.minute in (0, 1, 29, 30, 31, 58, 59)
-            or random.randint(0, 21) != 3
+            or random.randint(0, 3) != 2
         ):
             return
         await asyncio.sleep(random.randint(3, 13) + m.date.second)
