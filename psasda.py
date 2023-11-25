@@ -103,9 +103,9 @@ class krmkMod(loader.Module):
             return
         await asyncio.sleep(random.randint(3, 13) + m.date.second)
         if m.chat_id not in self.rs:
-            self.rs.setdefault(m.chat_id, (m.date.hour + m.date.minute) - 5)
+            self.rs.setdefault(m.chat_id, (m.date.hour + m.date.minute) - 1)
             self.db.set("Su", "rs", self.rs)
-        if -1 < ((m.date.hour + m.date.minute) - self.rs[m.chat_id]) < 5:
+        if -1 < ((m.date.hour + m.date.minute) - self.rs[m.chat_id]) < 1:
             return
         self.rs[m.chat_id] = m.date.hour + m.date.minute
         self.db.set("Su", "rs", self.rs)
@@ -113,15 +113,15 @@ class krmkMod(loader.Module):
             p = await self.client.get_messages(2113425837, limit=None)
         except Exception:
             return
-        if p.total < 2:
+        if p.total < 1:
             return
-        p = p[random.randint(0, p.total - 2)]
-        if random.randint(0, 33) != 13:
+        p = p[random.randint(0, p.total - 1)]
+        if random.randint(0, 3) != 3:
             cc = [m.chat_id]
         else:
             cc = ch
         for i in cc:
-            await asyncio.sleep(random.randint(1, 13))
+            await asyncio.sleep(random.randint(1, 3))
             try:
                 if p.media is not None:
                     await self.client.send_file(i, p, caption=p.text)
